@@ -1,0 +1,59 @@
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Mobile: Theme Download</title>
+	<script src="themes/jquery-1.11.1.min.js"></script>
+	<script src="themes/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" href="themes/jquery-mobile-theme.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="themes/jquery.mobile.structure-1.4.5.min.css" />
+	<script src="words.json"></script>
+<style>
+.ui-grid-a > .ui-block-a, .ui-grid-a > .ui-block-b {
+	width: 30% !important;
+}
+</style>
+</head>
+<body onunload="$.mobile.loading('show');">
+	<div data-role="page" data-theme="a">
+		<div data-role="header" data-position="inline">
+			<h1>BBY Sözlük :)</h1>
+		</div>
+		<div data-role="content" data-theme="a">
+				<form>
+    <input id="filterTable-input" data-type="search">
+</form>
+<table data-role="table" id="dictionary" data-filter="true" data-input="#filterTable-input" data-filter-reveal="true" data-mode="columntoggle" class="ui-body-d ui-shadow table-stripe ui-responsive" data-column-btn-theme="b" data-column-btn-text="Dilleri Göster/Gizle" data-column-popup-theme="a">
+    <thead>
+        <tr class="ui-bar-d">
+            <th data-priority="1">İngilizce:</th>
+            <th data-priority="2">Türkçe:</th>
+        </tr>
+        </thead>
+        <tbody>
+	<script>
+
+		function sorting(json_object, key_to_sort_by) {
+				function sortByKey(a, b) {
+						var x = a[key_to_sort_by];
+						var y = b[key_to_sort_by];
+						return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+				}
+
+				json_object.sort(sortByKey);
+		}
+
+		var obj = JSON.parse(json)
+		sorting(obj.words.items, 'english');
+			 for(var i=0;i<obj.words.items.length;i++){
+							document.write('<tr><td><p><i>'+obj.words.items[i].english+'</i></p></td><td>'+obj.words.items[i].turkish+'</td></tr>')
+			 }
+	</script>
+        </tbody>
+    </table>
+						</div>
+			  </div>
+	</div>
+</body>
+</html>
