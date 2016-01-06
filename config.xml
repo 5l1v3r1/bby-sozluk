@@ -31,6 +31,6 @@
         
     <!-- Uygulama Hakları -->
     
-    <preference name="permissions" value="android.permission.INTERNET"/>
+    <preference name="permissions" value="none"/>
  
 </widget>
